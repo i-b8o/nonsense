@@ -24,7 +24,7 @@ type Watchdog struct {
 	timer    *time.Timer
 }
 
-func New(interval time.Duration, callback func()) *Watchdog {
+func NewWatchdog(interval time.Duration, callback func()) *Watchdog {
 	w := Watchdog{
 		interval: interval,
 		timer:    time.AfterFunc(interval, callback),
