@@ -6,6 +6,7 @@ import (
 	"crypto/md5"
 	"crypto/rand"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -39,6 +40,16 @@ func (w *Watchdog) Stop() {
 func (w *Watchdog) Kick() {
 	w.timer.Stop()
 	w.timer.Reset(w.interval)
+}
+
+func GetJson(myClient *http.Client, url string, target interface{}) error {
+	r, err := myClient.Get(url)
+	if err != nil {
+		return err
+	}
+	defer r.Body.Close()
+
+	return json.NewDecoder(r.Body).Decode(target)
 }
 
 // SliceContainsString reports whether slaice sl contains string s.
