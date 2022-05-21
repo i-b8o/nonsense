@@ -20,6 +20,16 @@ import (
 	"time"
 )
 
+var letters = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func RandSeq(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letters[r.Intn(len(letters))]
+	}
+	return string(b)
+}
+
 type Watchdog struct {
 	interval time.Duration
 	timer    *time.Timer
