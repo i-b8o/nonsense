@@ -5,6 +5,7 @@ import (
 	"crypto/cipher"
 	"crypto/md5"
 	"crypto/rand"
+	r "math/rand"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
